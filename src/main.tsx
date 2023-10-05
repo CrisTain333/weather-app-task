@@ -4,6 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.ts";
+import { Toaster } from "@/components/ui/toaster";
 
 ReactDOM.createRoot(
   document.getElementById("root")!
@@ -11,6 +12,7 @@ ReactDOM.createRoot(
   <React.StrictMode>
     <Provider store={store}>
       <App />
+      <Toaster />
     </Provider>
   </React.StrictMode>
 );
