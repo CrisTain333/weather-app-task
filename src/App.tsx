@@ -1,6 +1,10 @@
+import Home from "./pages/home/home";
+
 const App = () => {
   return (
-    <div className="text-center text-red-500">app</div>
+    <div className="w-[95%] mx-auto">
+      <Home />
+    </div>
   );
 };
 
