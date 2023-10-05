@@ -32,8 +32,8 @@ npm run dev
 
 ## Technology
 
-### FrontEnd : React
+### FrontEnd: React, Typescript.
 
-### CSS framework : Tailwind , Shadcn/ui
+### CSS framework: Tailwind, Shadcn/UI
 
-### State - Management : Redux
+### State - Management: Redux
