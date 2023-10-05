@@ -121,7 +121,6 @@ const Navbar = () => {
 
               <Button
                 className="ml-3"
-                // onClick={handleSearch}
                 type="submit"
                 disabled={isLoading}
               >

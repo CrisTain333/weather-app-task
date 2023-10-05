@@ -5,16 +5,28 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useAppSelector } from "@/redux/hook";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "@/redux/hook";
 import { TemperatureUnitEnums } from "@/enums/temperaturUnit";
+import { changeTemperatureUnit } from "@/redux/feature/weather/weatherSlice";
 
 const TemperatureUnitChanger = () => {
   const { temperatureUnit } = useAppSelector(
     (state) => state.weather
   );
+
+  const dispatch = useAppDispatch();
   return (
     <div>
-      <Select onValueChange={(v) => console.log(v)}>
+      <Select
+        onValueChange={(
+          value:
+            | TemperatureUnitEnums.Celsius
+            | TemperatureUnitEnums.Fahrenheit
+        ) => dispatch(changeTemperatureUnit(value))}
+      >
         <SelectTrigger className="w-[70px]">
           <SelectValue
             placeholder={`${

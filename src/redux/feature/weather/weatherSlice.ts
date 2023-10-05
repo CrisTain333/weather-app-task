@@ -38,12 +38,22 @@ export const weatherSlice = createSlice({
       console.log(action);
       state.isCityNotFound = action.payload;
     },
+    changeTemperatureUnit: (
+      state,
+      action: PayloadAction<
+        | TemperatureUnitEnums.Celsius
+        | TemperatureUnitEnums.Fahrenheit
+      >
+    ) => {
+      state.temperatureUnit = action.payload;
+    },
   },
 });
 
 export const {
   setWeatherData,
   changeLoadingState,
+  changeTemperatureUnit,
   setIsCityNotFound,
 } = weatherSlice.actions;
 export default weatherSlice.reducer;

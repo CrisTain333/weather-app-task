@@ -10,6 +10,8 @@ import {
   Sunset,
 } from "lucide-react";
 import DataLoading from "./DataLoading";
+import { useAppSelector } from "@/redux/hook";
+import { TemperatureUnitEnums } from "@/enums/temperaturUnit";
 
 const Overview = ({
   data,
@@ -18,6 +20,10 @@ const Overview = ({
   data: any;
   isDataLoading: boolean;
 }) => {
+  const { temperatureUnit } = useAppSelector(
+    (state) => state.weather
+  );
+
   return (
     <div>
       {isDataLoading ? (
@@ -37,7 +43,12 @@ const Overview = ({
                 />
 
                 <h2 className="text-3xl font-semibold mt-3 mb-1">
-                  {data?.current?.temp_c}&deg; C
+                  {temperatureUnit ===
+                  TemperatureUnitEnums.Celsius ? (
+                    <>{`${data?.current?.temp_c}° C `}</>
+                  ) : (
+                    <> {`${data?.current?.temp_f} ° F `} </>
+                  )}
                 </h2>
 
                 <p className="font-medium mb-3">
