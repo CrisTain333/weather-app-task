@@ -20,7 +20,6 @@ const Navbar = () => {
     React.useState<boolean>(false);
 
   const { toast } = useToast();
-
   const dispatch = useAppDispatch();
 
   //Search Function
