@@ -1,7 +1,14 @@
+import React from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Cloud } from "lucide-react";
 const Navbar = () => {
+  const [inputValue, setInputValue] =
+    React.useState<string>();
+
+  // ** Search Function
+  const handleSearch = async () => {};
+
   return (
     <div>
       <nav>
@@ -15,11 +22,20 @@ const Navbar = () => {
 
           <div className="flex items-center">
             <Input
+              value={inputValue}
+              onChange={(e) =>
+                setInputValue(e.target.value)
+              }
               placeholder="Enter city"
               className="w-[70vw]"
             />
 
-            <Button className="ml-3">Search</Button>
+            <Button
+              className="ml-3"
+              onClick={handleSearch}
+            >
+              Search
+            </Button>
           </div>
         </div>
       </nav>
