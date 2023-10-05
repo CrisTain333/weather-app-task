@@ -7,39 +7,40 @@ const Home = () => {
   const { data, isCityNotFound, isDataLoading } =
     useAppSelector((state) => state.weather);
 
-  console.log("Data", data);
-  console.log("isLoading", isDataLoading);
-  console.log("CityNot Found", isCityNotFound);
+  const welcomeMessage = "Welcome to the Weather App";
+  const enterCityMessage =
+    "Enter a city name to get the weather forecast";
 
-  // if (!data && isCityNotFound === false) {
-  //   <div className="mt-20 space-y-3">
-  //     <h2 className="text-5xl text-center font-semibold">
-  //       Welcome to the Weather App
-  //     </h2>
-  //     <p className="text-2xl text-center font-semibold">
-  //       Enter a city name to get the weather forecast
-  //     </p>
-  //   </div>;
-
-  //   return;
-  // }
   return (
     <div>
       <Navbar />
-
-      {!isDataLoading && isCityNotFound ? (
+      {data === null &&
+      !isCityNotFound &&
+      !isDataLoading ? (
+        <>
+          <div className="mt-20 space-y-3">
+            <h2 className="text-5xl text-center font-semibold">
+              {welcomeMessage}
+            </h2>
+            <p className="text-2xl text-center font-semibold">
+              {enterCityMessage}
+            </p>
+          </div>
+        </>
+      ) : !isDataLoading && isCityNotFound ? (
         <>
           <Notfound />
         </>
       ) : (
         <>
-          {/* Main Content */}
           <main>
             <h1 className="text-3xl font-medium my-8">
               Today Overview
             </h1>
-
-            <Overview data={data} />
+            <Overview
+              data={data}
+              isDataLoading={isDataLoading}
+            />
           </main>
         </>
       )}
