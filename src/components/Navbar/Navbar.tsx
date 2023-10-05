@@ -2,14 +2,10 @@
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-// import { Cloud } from "lucide-react";
 import { useToast } from "../ui/use-toast";
 import { getWeather } from "@/api";
 import { ToastAction } from "@radix-ui/react-toast";
-import {
-  useAppDispatch,
-  // useAppSelector,
-} from "@/redux/hook";
+import { useAppDispatch } from "@/redux/hook";
 import {
   changeLoadingState,
   setIsCityNotFound,
@@ -129,6 +125,7 @@ const Navbar = () => {
             </form>
           </div>
           <div className="flex items-center px-2  rounded-md">
+            {/* <ModeToggle /> */}
             <TemperatureUnitChanger />
           </div>
         </div>
