@@ -19,7 +19,6 @@ export const weatherSlice = createSlice({
   initialState,
   reducers: {
     setWeatherData: (state, action: PayloadAction<any>) => {
-      console.log(action);
       state.data = action.payload;
     },
     changeLoadingState: (
@@ -29,9 +28,19 @@ export const weatherSlice = createSlice({
       console.log(action);
       state.isDataLoading = action.payload;
     },
+    setIsCityNotFound: (
+      state,
+      action: PayloadAction<boolean>
+    ) => {
+      console.log(action);
+      state.isCityNotFound = action.payload;
+    },
   },
 });
 
-export const { setWeatherData, changeLoadingState } =
-  weatherSlice.actions;
+export const {
+  setWeatherData,
+  changeLoadingState,
+  setIsCityNotFound,
+} = weatherSlice.actions;
 export default weatherSlice.reducer;

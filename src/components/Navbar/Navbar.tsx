@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ import { ToastAction } from "@radix-ui/react-toast";
 import { useAppDispatch } from "@/redux/hook";
 import {
   changeLoadingState,
+  setIsCityNotFound,
   setWeatherData,
 } from "@/redux/feature/weather/weatherSlice";
 const Navbar = () => {
@@ -22,9 +24,11 @@ const Navbar = () => {
   const dispatch = useAppDispatch();
 
   //Search Function
-  const handleSearch = async () => {
+  const handleSearch = async (e: any) => {
+    e.preventDefault();
     setIsLoading(true);
     dispatch(changeLoadingState(true));
+    dispatch(setIsCityNotFound(false));
     // ** Validate input so user can't search without value
 
     if (inputValue === undefined || inputValue === "") {
@@ -66,9 +70,14 @@ const Navbar = () => {
         });
         setIsLoading(false);
         dispatch(changeLoadingState(false));
+        dispatch(setIsCityNotFound(true));
         return;
       }
+      // Set data to store and other loading state false
+      setIsLoading(false);
       dispatch(setWeatherData(data));
+      dispatch(changeLoadingState(false));
+      dispatch(setIsCityNotFound(false));
     } catch (error) {
       setIsLoading(false);
       dispatch(changeLoadingState(false));
@@ -98,23 +107,29 @@ const Navbar = () => {
             <span className="ml-2 font-bold">Weather</span>
           </div>
 
-          <div className="flex items-center">
-            <Input
-              value={inputValue}
-              onChange={(e) =>
-                setInputValue(e.target.value)
-              }
-              placeholder="Enter city"
-              className="w-[70vw]"
-            />
-
-            <Button
-              className="ml-3"
-              onClick={handleSearch}
-              disabled={isLoading}
+          <div>
+            <form
+              onSubmit={handleSearch}
+              className="flex items-center"
             >
-              Search
-            </Button>
+              <Input
+                value={inputValue}
+                onChange={(e) =>
+                  setInputValue(e.target.value)
+                }
+                placeholder="Enter city"
+                className="w-[70vw]"
+              />
+
+              <Button
+                className="ml-3"
+                // onClick={handleSearch}
+                type="submit"
+                disabled={isLoading}
+              >
+                Search
+              </Button>
+            </form>
           </div>
         </div>
       </nav>
