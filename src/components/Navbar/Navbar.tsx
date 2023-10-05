@@ -116,7 +116,7 @@ const Navbar = () => {
                   setInputValue(e.target.value)
                 }
                 placeholder="Enter city"
-                className="w-[30vw]"
+                className="w-[50vw]  md:w-[30vw]"
               />
 
               <Button

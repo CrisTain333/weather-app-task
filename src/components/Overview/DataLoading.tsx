@@ -4,7 +4,7 @@ const DataLoading = () => {
   return (
     <div>
       <div className="grid grid-cols-12 w-full  gap-5 ">
-        <div className="col-span-3">
+        <div className="col-span-12 md:col-span-3">
           <Skeleton className="border-2 bg-gray-200 rounded-md p-7 h-full">
             <Skeleton className="h-28 w-28 -mt-2 bg-gray-300" />
 
@@ -20,24 +20,24 @@ const DataLoading = () => {
             </div>
           </Skeleton>
         </div>
-        <div className="col-span-9">
+        <div className="col-span-12 md:col-span-9">
           <div className="grid grid-cols-12 gap-8">
-            <Skeleton className="col-span-4 p-10 bg-gray-200 rounded-md">
+            <Skeleton className="col-span-12 md:col-span-4   p-10 bg-gray-200 rounded-md">
               <Skeleton className="text-3xl font-semibold bg-gray-300 h-20 w-40 " />
             </Skeleton>
-            <Skeleton className="col-span-4 p-10 bg-gray-200 rounded-md">
+            <Skeleton className="col-span-12 md:col-span-4 p-10 bg-gray-200 rounded-md">
               <Skeleton className="text-3xl font-semibold bg-gray-300 h-20 w-40 " />
             </Skeleton>
-            <Skeleton className="col-span-4 p-10 bg-gray-200 rounded-md">
+            <Skeleton className="col-span-12 md:col-span-4 p-10 bg-gray-200 rounded-md">
               <Skeleton className="text-3xl font-semibold bg-gray-300 h-20 w-40 " />
             </Skeleton>
-            <Skeleton className="col-span-4 p-10 bg-gray-200 rounded-md">
+            <Skeleton className="col-span-12 md:col-span-4 p-10 bg-gray-200 rounded-md">
               <Skeleton className="text-3xl font-semibold bg-gray-300 h-20 w-40 " />
             </Skeleton>
-            <Skeleton className="col-span-4 p-10 bg-gray-200 rounded-md">
+            <Skeleton className="col-span-12 md:col-span-4 p-10 bg-gray-200 rounded-md">
               <Skeleton className="text-3xl font-semibold bg-gray-300 h-20 w-40 " />
             </Skeleton>
-            <Skeleton className="col-span-4 p-10 bg-gray-200 rounded-md">
+            <Skeleton className="col-span-12 md:col-span-4 p-10 bg-gray-200 rounded-md">
               <Skeleton className="text-3xl font-semibold bg-gray-300 h-20 w-40 " />
             </Skeleton>
           </div>

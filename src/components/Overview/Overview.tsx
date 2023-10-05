@@ -28,7 +28,7 @@ const Overview = ({
         <>
           {" "}
           <div className="grid grid-cols-12 w-full  gap-5 ">
-            <div className="col-span-3">
+            <div className="col-span-12 md:col-span-3">
               <div className="border-2 bg-gray-50 rounded-md p-7">
                 <img
                   src={data?.current?.condition?.icon}
@@ -63,9 +63,9 @@ const Overview = ({
                 </div>
               </div>
             </div>
-            <div className="col-span-9">
+            <div className=" col-span-12  md:col-span-9 ">
               <div className="grid grid-cols-12 gap-8">
-                <div className="col-span-4 p-10 bg-gray-50 rounded-md">
+                <div className="col-span-12 md:col-span-4 p-10 bg-gray-50 rounded-md">
                   <div className="flex space-x-5 items-center justify-start">
                     <div>
                       <Wind size={50} />
@@ -82,7 +82,7 @@ const Overview = ({
                     </div>
                   </div>
                 </div>
-                <div className="col-span-4 p-10 bg-gray-50 rounded-md">
+                <div className="col-span-12 md:col-span-4 p-10 bg-gray-50 rounded-md">
                   <div className="flex space-x-5 items-center justify-start">
                     <div>
                       <Droplets size={50} />
@@ -98,7 +98,7 @@ const Overview = ({
                     </div>
                   </div>
                 </div>
-                <div className="col-span-4 p-10 bg-gray-50 rounded-md">
+                <div className="col-span-12 md:col-span-4 p-10 bg-gray-50 rounded-md">
                   <div className="flex space-x-5 items-center justify-start">
                     <div>
                       <Gauge size={50} />
@@ -114,7 +114,7 @@ const Overview = ({
                     </div>
                   </div>
                 </div>
-                <div className="col-span-4 p-10 bg-gray-50 rounded-md">
+                <div className="col-span-12 md:col-span-4 p-10 bg-gray-50 rounded-md">
                   <div className="flex space-x-5 items-center justify-start">
                     <div>
                       <ArrowUpRightFromCircle size={50} />
@@ -130,7 +130,7 @@ const Overview = ({
                     </div>
                   </div>
                 </div>
-                <div className="col-span-4 p-10 bg-gray-50 rounded-md">
+                <div className="col-span-12 md:col-span-4 p-10 bg-gray-50 rounded-md">
                   <div className="flex space-x-5 items-center justify-start">
                     <div>
                       <Sunrise size={50} />
@@ -149,7 +149,7 @@ const Overview = ({
                     </div>
                   </div>
                 </div>
-                <div className="col-span-4 p-10 bg-gray-50 rounded-md">
+                <div className="col-span-12 md:col-span-4 p-10 bg-gray-50 rounded-md">
                   <div className="flex space-x-5 items-center justify-start">
                     <div>
                       <Sunset size={50} />
