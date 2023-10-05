@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { TemperatureUnitEnums } from "@/enums/temperaturUnit";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
@@ -6,12 +7,14 @@ export interface WeatherState {
   data: any | null;
   isCityNotFound: boolean;
   isDataLoading: boolean;
+  temperatureUnit: string;
 }
 
 const initialState: WeatherState = {
   data: null,
   isCityNotFound: false,
   isDataLoading: false,
+  temperatureUnit: TemperatureUnitEnums.Celsius,
 };
 
 export const weatherSlice = createSlice({

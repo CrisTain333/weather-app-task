@@ -9,7 +9,7 @@ const Home = () => {
 
   const welcomeMessage = "Welcome to the Weather App";
   const enterCityMessage =
-    "Enter a city name to get the weather forecast";
+    "Enter a city name to get the weather.";
 
   return (
     <div>

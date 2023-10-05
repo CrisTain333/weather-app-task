@@ -2,16 +2,21 @@
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Cloud } from "lucide-react";
+// import { Cloud } from "lucide-react";
 import { useToast } from "../ui/use-toast";
 import { getWeather } from "@/api";
 import { ToastAction } from "@radix-ui/react-toast";
-import { useAppDispatch } from "@/redux/hook";
+import {
+  useAppDispatch,
+  // useAppSelector,
+} from "@/redux/hook";
 import {
   changeLoadingState,
   setIsCityNotFound,
   setWeatherData,
 } from "@/redux/feature/weather/weatherSlice";
+import TemperatureUnitChanger from "../TemperatureUnitChanger/TemperatureUnitChanger";
+
 const Navbar = () => {
   const [inputValue, setInputValue] =
     React.useState<string>();
@@ -100,12 +105,6 @@ const Navbar = () => {
       <nav>
         {/* left side */}
         <div className="flex justify-between my-2">
-          <div className="flex bg-gray-100 items-center px-2 py-2 rounded-md">
-            {" "}
-            <Cloud color="black" />{" "}
-            <span className="ml-2 font-bold">Weather</span>
-          </div>
-
           <div>
             <form
               onSubmit={handleSearch}
@@ -117,7 +116,7 @@ const Navbar = () => {
                   setInputValue(e.target.value)
                 }
                 placeholder="Enter city"
-                className="w-[70vw]"
+                className="w-[30vw]"
               />
 
               <Button
@@ -129,6 +128,9 @@ const Navbar = () => {
                 Search
               </Button>
             </form>
+          </div>
+          <div className="flex items-center px-2  rounded-md">
+            <TemperatureUnitChanger />
           </div>
         </div>
       </nav>
