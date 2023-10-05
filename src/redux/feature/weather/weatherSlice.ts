@@ -3,13 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface WeatherState {
-  data: any;
+  data: any | null;
   isCityNotFound: boolean;
+  isDataLoading: boolean;
 }
 
 const initialState: WeatherState = {
-  data: {},
+  data: null,
   isCityNotFound: false,
+  isDataLoading: false,
 };
 
 export const weatherSlice = createSlice({
@@ -20,8 +22,16 @@ export const weatherSlice = createSlice({
       console.log(action);
       state.data = action.payload;
     },
+    changeLoadingState: (
+      state,
+      action: PayloadAction<boolean>
+    ) => {
+      console.log(action);
+      state.isDataLoading = action.payload;
+    },
   },
 });
 
-export const { setWeatherData } = weatherSlice.actions;
+export const { setWeatherData, changeLoadingState } =
+  weatherSlice.actions;
 export default weatherSlice.reducer;

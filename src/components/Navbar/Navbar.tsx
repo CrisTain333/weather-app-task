@@ -5,13 +5,26 @@ import { Cloud } from "lucide-react";
 import { useToast } from "../ui/use-toast";
 import { getWeather } from "@/api";
 import { ToastAction } from "@radix-ui/react-toast";
+import { useAppDispatch } from "@/redux/hook";
+import {
+  changeLoadingState,
+  setWeatherData,
+} from "@/redux/feature/weather/weatherSlice";
 const Navbar = () => {
-  const { toast } = useToast();
   const [inputValue, setInputValue] =
     React.useState<string>();
 
+  const [isLoading, setIsLoading] =
+    React.useState<boolean>(false);
+
+  const { toast } = useToast();
+
+  const dispatch = useAppDispatch();
+
   //Search Function
   const handleSearch = async () => {
+    setIsLoading(true);
+    dispatch(changeLoadingState(true));
     // ** Validate input so user can't search without value
 
     if (inputValue === undefined || inputValue === "") {
@@ -22,13 +35,43 @@ const Navbar = () => {
         description:
           "There was a problem with your request.",
       });
+      setIsLoading(false);
+      dispatch(changeLoadingState(false));
       return;
     }
 
     try {
-      const data = await getWeather(inputValue!);
-      console.log(data);
+      const data = await getWeather(inputValue);
+      // * Handle Error first
+      if (
+        data?.error &&
+        data?.error?.response?.data?.error?.code === 1006
+      ) {
+        toast({
+          duration: 2000,
+          variant: "destructive",
+          title:
+            data?.error?.response?.data?.error?.message,
+          description: "Please Enter a Valid City",
+          action: (
+            <ToastAction
+              altText="Try again"
+              onClick={() => {
+                setInputValue("");
+              }}
+            >
+              Try again
+            </ToastAction>
+          ),
+        });
+        setIsLoading(false);
+        dispatch(changeLoadingState(false));
+        return;
+      }
+      dispatch(setWeatherData(data));
     } catch (error) {
+      setIsLoading(false);
+      dispatch(changeLoadingState(false));
       toast({
         duration: 2000,
         variant: "destructive",
@@ -49,7 +92,7 @@ const Navbar = () => {
       <nav>
         {/* left side */}
         <div className="flex justify-between my-2">
-          <div className="flex bg-gray-100 items-center px-2 py-3 rounded-md">
+          <div className="flex bg-gray-100 items-center px-2 py-2 rounded-md">
             {" "}
             <Cloud color="black" />{" "}
             <span className="ml-2 font-bold">Weather</span>
@@ -68,6 +111,7 @@ const Navbar = () => {
             <Button
               className="ml-3"
               onClick={handleSearch}
+              disabled={isLoading}
             >
               Search
             </Button>
