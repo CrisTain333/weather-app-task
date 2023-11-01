@@ -27,7 +27,6 @@ npm run dev
 ![project image](https://i.ibb.co/hHYfrck/Screenshot-3.png)
 
 ## Project Lighthouse Reports
-
 ![project image](https://i.ibb.co/K7HTTVw/Screenshot-2023-10-05-203431.png)
 
 ## Technology
